@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Hamburguesería</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+</head>
+<body>
+    <div>
+
+    </div>
+    <div id="main">
+        <h1>Hamburguesería</h1>
+        <div class="all">
+            <div class="mesa" tabindex="1">
+                <img src="mesa.png" alt="Mesa 1">
+                <p>1</p>
+            </div>
+            <div class="mesa" tabindex="2">
+                <img src="mesa.png" alt="Mesa 2">
+                <p>2</p>
+            </div>
+            <div class="mesa" tabindex="3">
+                <img src="mesa.png" alt="Mesa 3">
+                <p>3</p>
+            </div>
+            <div class="mesa" tabindex="4">
+                <img src="mesa.png" alt="Mesa 4">
+                <p>4</p>
+            </div>
+            <div class="mesa" tabindex="5">
+                <img src="mesa.png" alt="Mesa 5">
+                <p>5</p>
+            </div>
+            <div class="mesa" tabindex="6">
+                <img src="mesa.png" alt="Mesa 6">
+                <p>6</p>
+            </div>
+            <div class="mesa" tabindex="7">
+                <img src="mesa.png" alt="Mesa 7">
+                <p>7</p>
+            </div>
+            <div class="mesa" tabindex="8">
+                <img src="mesa.png" alt="Mesa 8">
+                <p>8</p>
+            </div>
+        </div>   
+    </div>
+    <div id="pedido" class="cont-hidden">
+        <h1 id="target">Mesa 0</h1>
+        <div class="all">
+            <div class="producto">
+                <button onclick="nextElementSibling.stepDown()" tabindex="-1">-</button>
+                <input type="number" id="vegaburguer" min="0" value="0" tabindex="1">
+                <button onclick="previousElementSibling.stepUp()" tabindex="-1">+</button>
+                <p>Vegaburguer</p>
+            </div>
+            <div class="producto">
+                <button onclick="nextElementSibling.stepDown()" tabindex="-1">-</button>
+                <input type="number" id="burguedeverdad" min="0" value="0" tabindex="2">
+                <button onclick="previousElementSibling.stepUp()" tabindex="-1">+</button>
+                <p>Burguedeverdad</p>
+            </div>
+            <div class="producto">
+                <button onclick="nextElementSibling.stepDown()" tabindex="-1">-</button>
+                <input type="number" id="colavega" min="0" value="0" tabindex="3">
+                <button onclick="previousElementSibling.stepUp()" tabindex="-1">+</button>
+                <p>Colavega</p>
+            </div>
+            <div class="producto">
+                <button onclick="nextElementSibling.stepDown()" tabindex="-1">-</button>
+                <input type="number" id="fantavega" min="0" value="0" tabindex="4">
+                <button onclick="previousElementSibling.stepUp()" tabindex="-1">+</button>
+                <p>Fantavega</p>
+            </div>
+            <button id="ok" tabindex="5">Aceptar</button>
+            <button id="print" tabindex="6">Limpiar e imprimir recibo</button>
+        </div>
+    </div>
+</body>
+</html>

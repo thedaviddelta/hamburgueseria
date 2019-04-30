@@ -1,0 +1,19 @@
+{
+  "name": "hamburgueseria",
+  "version": "1.0.0",
+  "description": "Hamburguesería vegana pero no mucho",
+  "main": "main.js",
+  "scripts": {
+    "test": "eslint .",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheDavidDelta/hamburgueseria"
+  },
+  "author": "TheDavidDelta",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^5.0.0"
+  }
+}
