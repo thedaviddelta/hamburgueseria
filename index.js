@@ -1,3 +1,10 @@
+const inElectron = navigator.userAgent.includes("Electron");
+let fs, homedir;
+if (inElectron) {
+    fs = require('fs');
+    homedir = require('os').homedir();
+}
+
 let current = 0;
 
 let mesas = [];
@@ -40,20 +47,8 @@ function print() {
     let fCant = +document.getElementById("fantavega").value;
 
     let rec = `Mesa ${current + 1}:`;
-    // Chrome no admite '\t'
-    if (/Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor)){
-        rec = rec.concat(`\nUds.     Producto         Precio    Importe\n--------------------------------------------\n`);
-        if (vCant > 0)
-            rec = rec.concat(`  ${vCant}        Vegaburg.          3.0€           ${vCant * 3}€\n`);
-        if (bCant > 0)
-            rec = rec.concat(`  ${bCant}        Burguedev.        3.5€        ${bCant * 3.5}€\n`);
-        if (cCant > 0)
-            rec = rec.concat(`  ${cCant}        Colavega           1.0€           ${cCant * 1}€\n`);
-        if (fCant > 0)
-            rec = rec.concat(`  ${fCant}        Fantavega          1.0€           ${fCant * 1}€\n`);
-        rec = rec.concat(`--------------------------------------------\n                                      TOTAL       ${vCant * 3 + bCant * 3.5 + cCant * 1 + fCant * 1}€`);
-    } else {
-        rec = rec.concat(`\r\nUds.\tProducto\tPrecio\tImporte\r\n----------------------------------------------------\r\n`);
+    if (inElectron) {
+        rec = rec.concat(`\r\nUds.\tProducto\tPrecio\tImporte\r\n-----------------------------------------\r\n`);
         if (vCant > 0)
             rec = rec.concat(`${vCant}\t\tVegaburg.\t3.0€\t${vCant * 3}€\r\n`);
         if (bCant > 0)
@@ -62,14 +57,59 @@ function print() {
             rec = rec.concat(`${cCant}\t\tColavega\t1.0€\t${cCant * 1}€\r\n`);
         if (fCant > 0)
             rec = rec.concat(`${fCant}\t\tFantavega\t1.0€\t${fCant * 1}€\r\n`);
-        rec = rec.concat(`----------------------------------------------------\r\n\t\t\t\t\tTOTAL\t${vCant * 3 + bCant * 3.5 + cCant * 1 + fCant * 1}€`);
-    }
-    window.alert(rec);
+        rec = rec.concat(`-----------------------------------------\r\n\t\t\t\t\tTOTAL\t${vCant * 3 + bCant * 3.5 + cCant * 1 + fCant * 1}€`);
 
-    mesas[current].vegaburguer = 0;
-    mesas[current].burguedeverdad = 0;
-    mesas[current].colavega = 0;
-    mesas[current].fantavega = 0;
+        let dirpath = `${homedir}\\recibos_hamburgueseria`
+        if (!fs.existsSync(dirpath)) {
+            fs.mkdir(dirpath, function (err) {
+                if(err)
+                    window.alert("Error al imprimir el recibo");
+            });
+        }
+        let date = new Date();
+        let filepath = `${dirpath}\\${date.getFullYear()}-${date.getMonth()}-${date.getDate()}_${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}_Mesa${current + 1}.txt`;
+        fs.writeFile(filepath, rec, 'utf-8', function (err) {
+            if (err)
+                window.alert("Error al imprimir el recibo");
+            else{
+                window.alert("Recibo impreso en " + filepath);
+                mesas[current].vegaburguer = 0;
+                mesas[current].burguedeverdad = 0;
+                mesas[current].colavega = 0;
+                mesas[current].fantavega = 0;
+            }
+        })
+    } else {
+        // Chrome no admite '\t'
+        if (!inElectron && /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor)){
+            rec = rec.concat(`\nUds.     Producto         Precio    Importe\n--------------------------------------------\n`);
+            if (vCant > 0)
+                rec = rec.concat(`  ${vCant}        Vegaburg.          3.0€           ${vCant * 3}€\n`);
+            if (bCant > 0)
+                rec = rec.concat(`  ${bCant}        Burguedev.        3.5€        ${bCant * 3.5}€\n`);
+            if (cCant > 0)
+                rec = rec.concat(`  ${cCant}        Colavega           1.0€           ${cCant * 1}€\n`);
+            if (fCant > 0)
+                rec = rec.concat(`  ${fCant}        Fantavega          1.0€           ${fCant * 1}€\n`);
+            rec = rec.concat(`--------------------------------------------\n                                      TOTAL       ${vCant * 3 + bCant * 3.5 + cCant * 1 + fCant * 1}€`);
+        } else {
+            rec = rec.concat(`\r\nUds.\tProducto\tPrecio\tImporte\r\n----------------------------------------------------\r\n`);
+            if (vCant > 0)
+                rec = rec.concat(`${vCant}\t\tVegaburg.\t3.0€\t${vCant * 3}€\r\n`);
+            if (bCant > 0)
+                rec = rec.concat(`${bCant}\t\tBurguedev.\t3.5€\t${bCant * 3.5}€\r\n`);
+            if (cCant > 0)
+                rec = rec.concat(`${cCant}\t\tColavega\t1.0€\t${cCant * 1}€\r\n`);
+            if (fCant > 0)
+                rec = rec.concat(`${fCant}\t\tFantavega\t1.0€\t${fCant * 1}€\r\n`);
+            rec = rec.concat(`----------------------------------------------------\r\n\t\t\t\t\tTOTAL\t${vCant * 3 + bCant * 3.5 + cCant * 1 + fCant * 1}€`);
+        }
+        window.alert(rec);
+        mesas[current].vegaburguer = 0;
+        mesas[current].burguedeverdad = 0;
+        mesas[current].colavega = 0;
+        mesas[current].fantavega = 0;
+    }
 
     document.getElementById("pedido").classList.add("cont-hidden");
     document.getElementById("main").classList.remove("cont-hidden");

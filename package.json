@@ -5,7 +5,11 @@
   "main": "main.js",
   "scripts": {
     "test": "eslint .",
-    "start": "electron ."
+    "start": "electron .",
+    "dist": "build",
+    "package-mac": "electron-packager . hamburgueseria --overwrite --asar=true --platform=darwin --icon=iconos/icon.icns --prune=true --out=build/Release",
+    "package-win": "electron-packager . hamburgueseria --overwrite --asar=true --platform=win32 --icon=iconos/icon.ico --prune=true --out=build/Release",
+    "package-linux": "electron-packager . hamburgueseria --overwrite --asar=true --platform=linux --icon=iconos/icon.png --prune=true --out=build/Release"
   },
   "repository": {
     "type": "git",
@@ -14,6 +18,20 @@
   "author": "TheDavidDelta",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^5.0.0"
+    "electron": "^5.0.0",
+    "electron-builder": "^20.39.0",
+    "electron-packager": "^13.1.1"
+  },
+  "build": {
+    "appId": "tk.thedaviddelta.hamburgueseria",
+    "productName": "Hamburguesería",
+    "asar": "true",
+    "directories": {
+      "output": "build/Release"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "iconos/icon.ico"
+    }
   }
 }
