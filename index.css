@@ -26,13 +26,9 @@ h1 {
     padding: 2.5% 1.5%;
     outline: none;
 }
-.mesa:hover {
+.mesa:hover, .mesa:focus {
     border-color: black;
     cursor: pointer;
-}
-/* Chrome experimental */
-.mesa:focus-visible {
-    border-color: black;
 }
 .mesa img {
     width: 100%;
@@ -96,7 +92,7 @@ h1 {
     margin-left: 2vw;
     font-size: 2.5vw;
 }
-#ok, #print {
+.submit {
     font-size: 2vw;
     font-family: Consolas;
     margin: 2.5vw 1vw;
@@ -105,11 +101,7 @@ h1 {
     background-color: rgb(250, 250, 250);
     outline: none;
 }
-#ok:hover, #print:hover {
+.submit:hover, .submit:focus {
     background-color: rgb(225, 225, 225);
     cursor: pointer;
-}
-/* Chrome experimental */
-#ok:focus-visible, #print:focus-visible {
-    background-color: rgb(225, 225, 225);
 }

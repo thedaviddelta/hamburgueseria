@@ -2,6 +2,8 @@
 <html lang="es">
 <head>
     <title>Hamburguesería</title>
+    <link rel="shortcut icon" href="./iconos/icon.ico">
+    <link rel="icon" type="image/png" href="./iconos/icon.png">
     <link rel="stylesheet" href="index.css">
     <script src="index.js"></script>
 </head>
@@ -12,35 +14,35 @@
     <div id="main">
         <h1>Hamburguesería</h1>
         <div class="all">
-            <div class="mesa" tabindex="1">
+            <div class="mesa" tabindex="1" onclick="mesa(1)" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) mesa(1)">
                 <img src="mesa.png" alt="Mesa 1">
                 <p>1</p>
             </div>
-            <div class="mesa" tabindex="2">
+            <div class="mesa" tabindex="2" onclick="mesa(2)" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) mesa(2)">
                 <img src="mesa.png" alt="Mesa 2">
                 <p>2</p>
             </div>
-            <div class="mesa" tabindex="3">
+            <div class="mesa" tabindex="3" onclick="mesa(3)" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) mesa(3)">
                 <img src="mesa.png" alt="Mesa 3">
                 <p>3</p>
             </div>
-            <div class="mesa" tabindex="4">
+            <div class="mesa" tabindex="4" onclick="mesa(4)" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) mesa(4)">
                 <img src="mesa.png" alt="Mesa 4">
                 <p>4</p>
             </div>
-            <div class="mesa" tabindex="5">
+            <div class="mesa" tabindex="5" onclick="mesa(5)" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) mesa(5)">
                 <img src="mesa.png" alt="Mesa 5">
                 <p>5</p>
             </div>
-            <div class="mesa" tabindex="6">
+            <div class="mesa" tabindex="6" onclick="mesa(6)" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) mesa(6)">
                 <img src="mesa.png" alt="Mesa 6">
                 <p>6</p>
             </div>
-            <div class="mesa" tabindex="7">
+            <div class="mesa" tabindex="7" onclick="mesa(7)" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) mesa(7)">
                 <img src="mesa.png" alt="Mesa 7">
                 <p>7</p>
             </div>
-            <div class="mesa" tabindex="8">
+            <div class="mesa" tabindex="8" onclick="mesa(8)" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) mesa(8)">
                 <img src="mesa.png" alt="Mesa 8">
                 <p>8</p>
             </div>
@@ -51,30 +53,30 @@
         <div class="all">
             <div class="producto">
                 <button onclick="nextElementSibling.stepDown()" tabindex="-1">-</button>
-                <input type="number" id="vegaburguer" min="0" value="0" tabindex="1">
+                <input type="number" id="vegaburguer" min="0" tabindex="11">
                 <button onclick="previousElementSibling.stepUp()" tabindex="-1">+</button>
                 <p>Vegaburguer</p>
             </div>
             <div class="producto">
                 <button onclick="nextElementSibling.stepDown()" tabindex="-1">-</button>
-                <input type="number" id="burguedeverdad" min="0" value="0" tabindex="2">
+                <input type="number" id="burguedeverdad" min="0" tabindex="12">
                 <button onclick="previousElementSibling.stepUp()" tabindex="-1">+</button>
                 <p>Burguedeverdad</p>
             </div>
             <div class="producto">
                 <button onclick="nextElementSibling.stepDown()" tabindex="-1">-</button>
-                <input type="number" id="colavega" min="0" value="0" tabindex="3">
+                <input type="number" id="colavega" min="0" tabindex="13">
                 <button onclick="previousElementSibling.stepUp()" tabindex="-1">+</button>
                 <p>Colavega</p>
             </div>
             <div class="producto">
                 <button onclick="nextElementSibling.stepDown()" tabindex="-1">-</button>
-                <input type="number" id="fantavega" min="0" value="0" tabindex="4">
+                <input type="number" id="fantavega" min="0" tabindex="14">
                 <button onclick="previousElementSibling.stepUp()" tabindex="-1">+</button>
                 <p>Fantavega</p>
             </div>
-            <button id="ok" tabindex="5">Aceptar</button>
-            <button id="print" tabindex="6">Limpiar e imprimir recibo</button>
+            <button class="submit" tabindex="15" onclick="aceptar()" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) aceptar()">Aceptar</button>
+            <button class="submit" tabindex="16" onclick="print()" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) print()">Limpiar e imprimir recibo</button>
         </div>
     </div>
 </body>
