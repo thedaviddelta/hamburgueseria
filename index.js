@@ -1,8 +1,23 @@
 const inElectron = navigator.userAgent.includes("Electron");
-let fs, homedir;
+let fs, homedir, shell, dirpath;
+
 if (inElectron) {
     fs = require('fs');
     homedir = require('os').homedir();
+    shell = require('electron').shell;
+
+    dirpath = `${homedir}\\recibos_hamburgueseria`
+    if (!fs.existsSync(dirpath)) {
+        fs.mkdir(dirpath, function (err) {
+            if(err)
+                window.alert("Error al crear la carpeta");
+        });
+    }
+
+    window.onload = () => document.getElementById("main").innerHTML += `
+        <div id="recibos" tabindex="9" onclick="recibos()" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) recibos()">
+            <p>Recibos</p>
+        </div>`;
 }
 
 let current = 0;
@@ -59,20 +74,14 @@ function print() {
             rec = rec.concat(`${fCant}\t\tFantavega\t1.0€\t${fCant * 1}€\r\n`);
         rec = rec.concat(`-----------------------------------------\r\n\t\t\t\t\tTOTAL\t${vCant * 3 + bCant * 3.5 + cCant * 1 + fCant * 1}€`);
 
-        let dirpath = `${homedir}\\recibos_hamburgueseria`
-        if (!fs.existsSync(dirpath)) {
-            fs.mkdir(dirpath, function (err) {
-                if(err)
-                    window.alert("Error al imprimir el recibo");
-            });
-        }
         let date = new Date();
         let filepath = `${dirpath}\\${date.getFullYear()}-${date.getMonth()}-${date.getDate()}_${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}_Mesa${current + 1}.txt`;
         fs.writeFile(filepath, rec, 'utf-8', function (err) {
             if (err)
                 window.alert("Error al imprimir el recibo");
             else{
-                window.alert("Recibo impreso en " + filepath);
+                // window.alert("Recibo impreso en " + filepath);
+                shell.openItem(filepath);
                 mesas[current].vegaburguer = 0;
                 mesas[current].burguedeverdad = 0;
                 mesas[current].colavega = 0;
@@ -113,4 +122,9 @@ function print() {
 
     document.getElementById("pedido").classList.add("cont-hidden");
     document.getElementById("main").classList.remove("cont-hidden");
+}
+
+function recibos() {
+    document.getElementById("recibos").blur();
+    shell.openItem(dirpath);
 }

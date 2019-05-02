@@ -1,6 +1,6 @@
 {
   "name": "hamburgueseria",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Hamburguesería vegana pero no mucho",
   "main": "main.js",
   "scripts": {
@@ -32,6 +32,9 @@
     "win": {
       "target": "nsis",
       "icon": "iconos/icon.ico"
+    },
+    "nsis": {
+      "license": "LICENSE"
     }
   }
 }
