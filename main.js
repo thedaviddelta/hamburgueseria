@@ -1,4 +1,5 @@
-const { app, BrowserWindow, Menu } = require('electron')
+const { app, BrowserWindow, Menu, shell } = require('electron');
+const homedir = require('os').homedir();
 
 function createWindow () {
     let win = new BrowserWindow({ 
@@ -14,6 +15,13 @@ function createWindow () {
         {
             label: "Archivo",
             submenu: [
+                {
+                    label: "Abrir carpeta de recibos",
+                    click(){
+                        shell.openItem(`${homedir}\\recibos_hamburgueseria`);
+                    },
+                    accelerator: process.platform === "darwin" ? "Command+O" : "Ctrl+O"
+                },
                 {
                     label: "Salir",
                     role: "quit",

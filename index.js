@@ -15,7 +15,7 @@ if (inElectron) {
     }
 
     window.onload = () => document.getElementById("main").innerHTML += `
-        <div id="recibos" tabindex="9" onclick="recibos()" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) recibos()">
+        <div id="recibos" tabindex="9" onclick="this.blur(); shell.openItem(dirpath);" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) { this.blur(); shell.openItem(dirpath); }">
             <p>Recibos</p>
         </div>`;
 }
@@ -122,9 +122,4 @@ function print() {
 
     document.getElementById("pedido").classList.add("cont-hidden");
     document.getElementById("main").classList.remove("cont-hidden");
-}
-
-function recibos() {
-    document.getElementById("recibos").blur();
-    shell.openItem(dirpath);
 }
