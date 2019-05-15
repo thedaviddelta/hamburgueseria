@@ -6,7 +6,7 @@ if (inElectron) {
     homedir = require('os').homedir();
     shell = require('electron').shell;
 
-    dirpath = `${homedir}\\recibos_hamburgueseria`
+    dirpath = `${homedir}/recibos_hamburgueseria`;
     if (!fs.existsSync(dirpath)) {
         fs.mkdir(dirpath, function (err) {
             if(err)
@@ -75,7 +75,7 @@ function print() {
         rec = rec.concat(`-----------------------------------------\r\n\t\t\t\t\tTOTAL\t${vCant * 3 + bCant * 3.5 + cCant * 1 + fCant * 1}€`);
 
         let date = new Date();
-        let filepath = `${dirpath}\\${date.getFullYear()}-${date.getMonth()}-${date.getDate()}_${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}_Mesa${current + 1}.txt`;
+        let filepath = `${dirpath}/${date.getFullYear()}-${date.getMonth()}-${date.getDate()}_${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}_Mesa${current + 1}.txt`;
         fs.writeFile(filepath, rec, 'utf-8', function (err) {
             if (err)
                 window.alert("Error al imprimir el recibo");
