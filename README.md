@@ -10,5 +10,7 @@ La aplicación se puede descargar en los siguientes links:
 ## Visualización online
 Este proyecto se puede ver online en funcionamiento en [esta web](http://thedaviddelta.tk/hamburgueseria/), obviamente sin las funcionalidades de la aplicación Electron: en la versión web no se guardan los recibos en un archivo sino que se imprimen por pantalla.
 
+También se pueden visualizar online las versiones responsive hechas con [flexbox](http://thedaviddelta.tk/hamburgueseria/index_flexbox.html) y [Bootstrap](http://thedaviddelta.tk/hamburgueseria/index_bootstrap.html).
+
 ## Icono
 El icono usado en este proyecto ([source](http://www.iconarchive.com/show/noto-emoji-food-drink-icons-by-google/32382-hamburger-icon.html)) está licenciado bajo Apache License 2.0, cuya [licencia](./iconos/license.txt) se incluye en la carpeta de los mismos.

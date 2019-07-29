@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hamburguesería</title>
+    <link rel="shortcut icon" href="./iconos/icon.ico">
+    <link rel="icon" type="image/png" href="./iconos/icon.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        /* Creo la clase en vez de añadirle el atributo style o
+        la clase de Bootstrap correspondiente para poder reutilizar 
+        el código JS (el cual añade y quita ésta clase) */
+        .cont-hidden {
+            display: none;
+        }
+        
+        /* Posicionamiento responsive de los índices de mesa */
+        .carousel-caption {
+            top: -1vw;
+            bottom: auto;
+        }
+        .carousel-caption h2 {
+            font-size: 7vw;
+        }
+        @media screen and (min-width: 576px) { /* sm */
+            .carousel-caption {
+                top: -0.25rem;
+            }
+            .carousel-caption h2 {
+                font-size: 2.5rem;
+            }
+        }
+        @media screen and (min-width: 768px) { /* md */
+            .carousel-caption {
+                top: -0.25rem;
+            }
+            .carousel-caption h2 {
+                font-size: 1.5rem;
+            }
+        }
+        @media screen and (min-width: 992px) { /* lg */
+            .carousel-caption {
+                top: 0;
+            }
+            .carousel-caption h2 {
+                font-size: 2rem;
+            }
+        }
+        @media screen and (min-width: 1200px) { /* xl */
+            .carousel-caption {
+                top: 0;
+            }
+            .carousel-caption h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+    <script src="index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-input-spinner@1.11.8/src/bootstrap-input-spinner.min.js"></script>
+</head>
+<body class="bg-danger">
+    <div id="main" class="container">
+        <div class="row my-2">
+            <h1 class="col text-center text-uppercase text-white">Hamburguesería</h1>
+        </div>
+        <div class="row bg-warning mx-1 my-3 p-4 rounded">
+            <div class="col">
+                <div class="row">
+                    <div class="col-6 col-md-3 btn btn-warning" tabindex="1" onclick="mesa(1)" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) mesa(1)">
+                        <img src="mesa.png" alt="Mesa 1" class="img-fluid">
+                        <div class="carousel-caption">
+                            <h2 class="text-dark">1</h2>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 btn btn-warning" tabindex="2" onclick="mesa(2)" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) mesa(2)">
+                        <img src="mesa.png" alt="Mesa 2" class="img-fluid">
+                        <div class="carousel-caption">
+                            <h2 class="text-dark">2</h2>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 btn btn-warning" tabindex="3" onclick="mesa(3)" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) mesa(3)">
+                        <img src="mesa.png" alt="Mesa 3" class="img-fluid">
+                        <div class="carousel-caption">
+                            <h2 class="text-dark">3</h2>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 btn btn-warning" tabindex="4" onclick="mesa(4)" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) mesa(4)">
+                        <img src="mesa.png" alt="Mesa 4" class="img-fluid">
+                        <div class="carousel-caption">
+                            <h2 class="text-dark">4</h2>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 btn btn-warning" tabindex="5" onclick="mesa(5)" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) mesa(5)">
+                        <img src="mesa.png" alt="Mesa 5" class="img-fluid">
+                        <div class="carousel-caption">
+                            <h2 class="text-dark">5</h2>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 btn btn-warning" tabindex="6" onclick="mesa(6)" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) mesa(6)">
+                        <img src="mesa.png" alt="Mesa 6" class="img-fluid">
+                        <div class="carousel-caption">
+                            <h2 class="text-dark">6</h2>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 btn btn-warning" tabindex="7" onclick="mesa(7)" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) mesa(7)">
+                        <img src="mesa.png" alt="Mesa 7" class="img-fluid">
+                        <div class="carousel-caption">
+                            <h2 class="text-dark">7</h2>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 btn btn-warning" tabindex="8" onclick="mesa(8)" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) mesa(8)">
+                        <img src="mesa.png" alt="Mesa 8" class="img-fluid">
+                        <div class="carousel-caption">
+                            <h2 class="text-dark">8</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="pedido" class="cont-hidden container">
+        <div class="row my-2">
+            <h1 id="target" class="col text-center text-uppercase text-white">Mesa 0</h1>
+        </div>
+        <div class="row bg-warning mx-1 my-3 p-4 rounded">
+            <div class="col">
+                <div class="row">
+                    <div class="col-12 col-md-5 offset-1 my-3">
+                        <h4>Vegaburguer</h4>
+                        <input type="number" class="vegaburguer" min="0" tabindex="11">
+                    </div>
+                    <div class="col-12 col-md-5 offset-1 my-3">
+                        <h4>Burguedeverdad</h4>
+                        <input type="number"  class="burguedeverdad" min="0" tabindex="12">
+                    </div>
+                    <div class="col-12 col-md-5 offset-1 my-3">
+                        <h4>Colavega</h4>
+                        <input type="number" class="colavega" min="0" tabindex="13">
+                    </div>
+                    <div class="col-12 col-md-5 offset-1 my-3">
+                        <h4>Fantavega</h4>
+                        <input type="number" class="fantavega" min="0" tabindex="14">
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-xl-4 col-lg-5 col-md-7 col-9 btn-group mt-5 mb-3">
+                        <button class="submit btn btn-success" tabindex="15" onclick="aceptar()" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) aceptar()">Aceptar</button>
+                        <button class="submit btn btn-info" tabindex="16" onclick="print()" onkeypress="if (hasFocus && (event.keyCode == 13 || event.keyCode == 32)) print()">Limpiar e imprimir recibo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("input[type='number']").inputSpinner({
+            buttonsClass: "btn-light",
+            groupClass: "w-75"
+        });
+
+        /* La función de arriba crea un nuevo elemento para hacer el spinner,
+        cogiendo las clases pero no los ids. De nuevo, para reutilizar el
+        archivo JS en el que hago uso de los ids, pongo una clase arbitraria
+        a mi input y luego establezco el id correspondiente a la última
+        ocurrencia de cada clase (que es el elemento que él crea) */
+        $(".vegaburguer").last().attr("id", "vegaburguer");
+        $(".burguedeverdad").last().attr("id", "burguedeverdad");
+        $(".colavega").last().attr("id", "colavega");
+        $(".fantavega").last().attr("id", "fantavega");
+    </script>
+</body>
+</html>
